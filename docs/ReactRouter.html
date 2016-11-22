@@ -1,0 +1,427 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>React Router | Blip</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../docs/Redux.html" />
+    
+    
+    <link rel="prev" href="../docs/React.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="2.2"
+        data-chapter-title="React Router"
+        data-filepath="docs/ReactRouter.md"
+        data-basepath=".."
+        data-revision="Tue Nov 22 2016 12:10:30 GMT-0800 (PST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="docs/StartHere.html">
+            
+                
+                    <a href="../docs/StartHere.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Blip developer guide
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="docs/FeatureOverview.html">
+            
+                
+                    <a href="../docs/FeatureOverview.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        overview of features
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="docs/DirectoryStructure.html">
+            
+                
+                    <a href="../docs/DirectoryStructure.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        app &amp; directory structure
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="docs/Architecture.html">
+            
+                
+                    <a href="../docs/Architecture.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        architecture
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="docs/CodeStyle.html">
+            
+                
+                    <a href="../docs/CodeStyle.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        code style
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="docs/Dependencies.html">
+            
+                
+                    <a href="../docs/Dependencies.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        usage of dependencies
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="docs/React.html">
+            
+                
+                    <a href="../docs/React.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        React
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2" data-path="docs/ReactRouter.html">
+            
+                
+                    <a href="../docs/ReactRouter.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        React Router
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="docs/Redux.html">
+            
+                
+                    <a href="../docs/Redux.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        Redux
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="docs/StateTreeGlossary.html">
+            
+                
+                    <a href="../docs/StateTreeGlossary.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.1.</b>
+                        
+                        Glossary of state tree terms
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="docs/Webpack.html">
+            
+                
+                    <a href="../docs/Webpack.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        webpack
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="docs/Misc.html">
+            
+                
+                    <a href="../docs/Misc.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        misc
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="docs/IntegrationTesting.html">
+            
+                
+                    <a href="../docs/IntegrationTesting.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        integration testing
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="docs/FakeChildAccounts.html">
+            
+                
+                    <a href="../docs/FakeChildAccounts.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        &quot;fake child accounts&quot;
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Blip</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="blips-usage-of-react-router">Blip&apos;s usage of React Router</h2>
+<p>When development of blip in its current form as a React application began in late 2013 and the beginning of 2014, <a href="https://github.com/ReactTraining/react-router" title="GitHub: React Router" target="_blank">React Router</a> did not yet exist, at least not as a well-supported and widely-used client-side routing solution for React applications.</p>
+<h3 id="&#x1F47B;-history">&#x1F47B; History</h3>
+<p>Originally blip used <a href="https://github.com/flatiron/director" title="GitHub: director" target="_blank">director</a>, a framework-agnostic (as well as isomorphic) JavaScript library for routing. This didn&apos;t &quot;play&quot; terribly well with React, and the routing code was complex, difficult to understand, difficult to debug, etc. By far the most difficult thing was understanding where the source of truth was regarding application state/location: in the route (URL) or in the app&apos;s top-level component (React) state. (We had a doozy of an <code>&lt;App/&gt;</code> component back then at the top level that was 1000s of lines long (&#x1F631;), and app state was basically all contained in the state of this component, except for the stuff that director managed, if it was truly the source of truth for that state.)</p>
+<h3 id="&#x2728;-today-&#x2728;">&#x2728; Today &#x2728;</h3>
+<p>We ripped apart the old <code>&lt;App/&gt;</code> component and refactored to bring in React Router as our routing solution in late 2015. Routes are defined in <a href="https://github.com/tidepool-org/blip/blob/master/app/routes.js" title="blip: app/routes.js" target="_blank">app/routes.js</a>. We make extensive use of <a href="https://github.com/ReactTraining/react-router/blob/master/docs/API.md#onenternextstate-replace-callback" title="React Router docs: Router onEnter" target="_blank">the <code>onEnter</code> hook</a> for React Router <code>&lt;Route/&gt;</code> elements, including the asynchronous option when a callback function is provided as the third argument; this blocks the route transition until the callback is called.</p>
+<p>We also sometimes pass our <a href="Redux.html">redux</a> store to an <code>onEnter</code> hook function in order to access the application state via <code>store.getState()</code> in order to determine whether to continue the current route transition or redirect (depending on whether the logged-in user has verified their sign-up e-mail address or not, <a href="https://github.com/tidepool-org/blip/blob/master/app/routes.js#L154" title="blip: routes.js requireNotVerified onEnter hook" target="_blank">for example</a>).</p>
+<p>State changes that require URL changes are rare in blip currently (largely because we simply <em>don&apos;t</em> sync very much application state with the URL). The vast majority of the changes happen in the <code>onEnter</code> hooks defined in <code>routes.js</code>, but there are a few other places where we redirect in response to user interaction with <code>browserHistory.push</code> (<code>git grep</code>-ing for this phrase should find all instances for you) or where we redirect inside a &quot;thunk&quot; action creator; the latter instances can be found with a search for <code>routeActions.push</code>.</p>
+<h3 id="&#x1F680;-the-future">&#x1F680; The Future</h3>
+<h4 id="more-visualization-state-in-the-url-deep-linking">More visualization state in the URL (&quot;deep linking&quot;)</h4>
+<p>One of our goals for the incremental rewrite of Tidepool&apos;s data visualization code (from <a href="https://github.com/tidepool-org/tideline" title="GitHub: tideline" target="_blank">tideline</a> to <a href="https://github.com/tidepool-org/viz" title="GitHub: viz" target="_blank">viz</a>) is to enable &quot;deep linking&quot; in the data visualization(s) so that a user can bookmark or copy and share a URL and anyone who has that URL (and permissions to view the relevant PwD&apos;s data) will see essentially the same data visualization that the original user saw.</p>
+<p>The vast majority of the data visualization state, including which of the five &quot;views&quot; the user is on (Basics, Daily, Weekly, Trends, or Device Settings) is currently <a href="https://github.com/tidepool-org/blip/blob/master/app/pages/patientdata/patientdata.js#L70" title="GitHub: blip app/pages/patientdata/patientdata.js" target="_blank">encapsulated inside the <code>&lt;PatientData/&gt;</code> component</a> as its React-internal <code>state</code>.</p>
+<p>As we&apos;re rewriting visualization code, we&apos;re adding <em>new</em> state&#x2014;i.e., that didn&apos;t exist before, such as state belonging to the new CGM version of the Trends view and the state of which basal schedules or settings profiles are open or collapsed on the Device Settings view&#x2014;to blip&apos;s redux-controlled state by way of a <code>vizReducer</code> as one of the exports from the new viz repo. By <a href="https://github.com/tidepool-org/blip/blob/master/app/redux/store/configureStore.prod.js#L33" title="GitHub: blip app/redux/store/configureStore.prod.js" target="_blank">including this reducer</a> in our composed root reducer for blip, we ensure that blip&apos;s state updates in response to any of the action creators fired in viz components (or in blip, where we import action creator functions themselves or component from viz to be rendered in blip).</p>
+<p>As we move more and more visualization code into viz and especially as we move functionality controlling some aspects of the visualization state (such as which view is active) from blip into viz, we&apos;ll have to plan for the eventual goal of deep-linking or, in other words, think <em>carefully</em> about where the source of truth for certain state should live.</p>
+<p>Take the active view, for example, which in the current <code>&lt;PatientData/&gt;</code> state, we track as <code>chartType</code>. This state will <em>definitely</em> need to be part of the URL as the first step along the road to &quot;deep linking&quot;: we want URLs of the form <code>/patients/:id/data/basics</code> and <code>/patients/:id/data/daily</code> instead of the current <code>/patients/:id/data</code> for all views. In order to avoid duplication of state<sup><a href="#fn_a" id="reffn_a">a</a></sup> between the <code>routing</code> branch of blip&apos;s state (updated via the <code>routeReducer</code> which is an export from the <a href="https://github.com/reactjs/react-router-redux" title="GitHub: react-router-redux" target="_blank">react-router-redux</a> package in a fashion directly parallel<sup><a href="#fn_b" id="reffn_b">b</a></sup> to our export of <code>vizReducer</code> from the @tidepool/viz package) and the <code>viz</code> branch of state controlled by the <code>vizReducer</code>, we&apos;ll need to use a different strategy&#x2014;that is, not the current <code>vizReducer</code> strategy&#x2014;to update the <code>chartType</code> state so that this state is properly &quot;owned&quot; by the <code>routeReducer</code>.</p>
+<p>There may be several ways of solving the problem of affecting <code>routing</code> state from viz, which has no direct access to blip&apos;s router (and nor should it). A couple to consider are:</p>
+<ul>
+<li>viz dispatches actions representing state changes that are reflected in the URL (such as the active view) as per usual in a Redux implementation, but no state changes are defined for these action types in the exported <code>vizReducer</code>; instead, blip intercepts all such actions (according to their <code>type</code>) with a middleware and dispatches a <code>routeActions.push</code> action to update the <code>routing</code> state</li>
+<li>viz includes React Router as a dependency and the top-level component exported to blip requires a set of <code>href</code>s as props to populate its React Router <code>&lt;Link/&gt;</code>s</li>
+</ul>
+<h4 id="upgrading-to-the-4x-version-of-react-router">Upgrading to the 4.x version of React Router</h4>
+<p>The 4.x version of React Router is, as of mid-November 2016, currently in alpha and includes <a href="https://github.com/ReactTraining/react-router/tree/v4#v4-faq" title="GitHub: React Router v4.x FAQ" target="_blank">many breaking changes</a>. The API changes have already caused some controversy in the community, so we&apos;ll have to watch the development and assess whether or not it makes sense to upgrade our dependency in blip. Since React Router is a true community project (i.e., not released by Facebook), it seems unlikely that the 3.x version will enjoy long-term support.</p>
+<blockquote id="fn_a">
+<sup>a</sup>. As a known issue/remaining tech debt from the introduction of React Router and Redux into the blip codebase, we currently have <em>some</em> duplication of information across the <code>routing</code> and <code>blip</code> branches of blip&apos;s state tree. A good example is the user ID hash of the PwD whose data is in view on the <code>/patients/:id/data</code> path currently used for all data views; this ID is part of the <code>routing</code> state as the <code>:id</code> param in the path, but it is <em>also</em> set as the <a href="https://github.com/tidepool-org/blip/blob/master/app/redux/reducers/misc.js#L194" title="GitHub: blip app/redux/reducers/misc.js" target="_blank"><code>currentPatientInViewId</code></a> in the <code>blip</code> branch of the state tree upon successful fetching of the PwD&apos;s profile.<a href="#reffn_a" title="Jump back to footnote [a] in the text."> &#x21A9;</a>
+</blockquote>
+<blockquote id="fn_b">
+<sup>b</sup>. And, in fact, one of the inspirations for the way we structured the @tidepool/viz package along with the <a href="http://redux-form.com/6.2.0/" title="Redux Form" target="_blank">redux-form</a> package.<a href="#reffn_b" title="Jump back to footnote [b] in the text."> &#x21A9;</a>
+</blockquote>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../docs/React.html" class="navigation navigation-prev " aria-label="Previous page: React"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../docs/Redux.html" class="navigation navigation-next " aria-label="Next page: Redux"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

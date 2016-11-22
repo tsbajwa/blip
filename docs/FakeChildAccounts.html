@@ -1,0 +1,419 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>&quot;fake child accounts&quot; | Blip</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    
+    <link rel="prev" href="../docs/IntegrationTesting.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="3.2"
+        data-chapter-title="&quot;fake child accounts&quot;"
+        data-filepath="docs/FakeChildAccounts.md"
+        data-basepath=".."
+        data-revision="Tue Nov 22 2016 12:10:30 GMT-0800 (PST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="docs/StartHere.html">
+            
+                
+                    <a href="../docs/StartHere.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Blip developer guide
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="docs/FeatureOverview.html">
+            
+                
+                    <a href="../docs/FeatureOverview.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        overview of features
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="docs/DirectoryStructure.html">
+            
+                
+                    <a href="../docs/DirectoryStructure.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        app &amp; directory structure
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="docs/Architecture.html">
+            
+                
+                    <a href="../docs/Architecture.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        architecture
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="docs/CodeStyle.html">
+            
+                
+                    <a href="../docs/CodeStyle.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        code style
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="docs/Dependencies.html">
+            
+                
+                    <a href="../docs/Dependencies.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        usage of dependencies
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="docs/React.html">
+            
+                
+                    <a href="../docs/React.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        React
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="docs/ReactRouter.html">
+            
+                
+                    <a href="../docs/ReactRouter.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        React Router
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="docs/Redux.html">
+            
+                
+                    <a href="../docs/Redux.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        Redux
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="docs/StateTreeGlossary.html">
+            
+                
+                    <a href="../docs/StateTreeGlossary.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.1.</b>
+                        
+                        Glossary of state tree terms
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="docs/Webpack.html">
+            
+                
+                    <a href="../docs/Webpack.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        webpack
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="docs/Misc.html">
+            
+                
+                    <a href="../docs/Misc.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        misc
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="docs/IntegrationTesting.html">
+            
+                
+                    <a href="../docs/IntegrationTesting.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        integration testing
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.2" data-path="docs/FakeChildAccounts.html">
+            
+                
+                    <a href="../docs/FakeChildAccounts.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        &quot;fake child accounts&quot;
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Blip</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="fake-child-accounts">&quot;Fake child accounts&quot;</h2>
+<p>The phrase &quot;fake child accounts&quot; gets thrown around at Tidepool quite frequently, but it&apos;s not the most transparent term. So what is a fake child account?</p>
+<p>A &quot;fake child account&quot; is a <em>single</em> Tidepool user account with data storage set up where the user signing up (for simplicity, we&apos;ll call this person the &quot;parent,&quot; although it could be another type of caregiver or guardian) chose the radio option &quot;This is for someone I care for who has type 1 diabetes&quot; <em>instead of</em> &quot;This is for me, I have type 1 diabetes&quot;.</p>
+<p>When the &quot;parent&quot; sets up data storage for their &quot;child&quot; in this way, only <strong>one</strong> Tidepool account is created, and it is for this reason that we call it a &quot;fake child account&quot;&#x2014;that is, because there isn&apos;t a parent account and a child account created (with a linkage between the two), but just one single account that has only one user ID and some special properties.</p>
+<p>The user information in a normal Tidepool data storage account has the following shape (at a minimum):</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;fullName&quot;</span>: <span class="hljs-string">&quot;Jane Doe&quot;</span>,
+  <span class="hljs-string">&quot;patient&quot;</span>: {
+    <span class="hljs-string">&quot;birthday&quot;</span>: <span class="hljs-string">&quot;1980-03-15&quot;</span>,
+    <span class="hljs-string">&quot;diagnosisDate&quot;</span>: <span class="hljs-string">&quot;1999-12-25&quot;</span>
+  }
+}
+</code></pre>
+<p>In contrast, the user information in a &quot;fake child account&quot; has the shape below. Note the <code>isOtherPerson</code> Boolean property and additional embedded <code>fullName</code> property inside the <code>patient</code> object in particular:</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;fullName&quot;</span>: <span class="hljs-string">&quot;Angie Bowie&quot;</span>,
+  <span class="hljs-string">&quot;patient&quot;</span>: {
+    <span class="hljs-string">&quot;birthday&quot;</span>: <span class="hljs-string">&quot;1971-05-30&quot;</span>,
+    <span class="hljs-string">&quot;diagnosisDate&quot;</span>: <span class="hljs-string">&quot;2000-01-01&quot;</span>,
+    <span class="hljs-string">&quot;isOtherPerson&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">&quot;fullName&quot;</span>: <span class="hljs-string">&quot;Zowie Bowie&quot;</span>
+  }
+}
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../docs/IntegrationTesting.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: integration testing"><i class="fa fa-angle-left"></i></a>
+        
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
