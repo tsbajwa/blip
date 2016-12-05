@@ -51,7 +51,7 @@
         data-chapter-title="Introduction"
         data-filepath="README.md"
         data-basepath="."
-        data-revision="Tue Nov 22 2016 12:10:30 GMT-0800 (PST)"
+        data-revision="Mon Dec 05 2016 13:43:43 GMT-0800 (PST)"
         data-innerlanguage="">
     
 
@@ -384,12 +384,12 @@ $ npm start
 <p>Open your web browser and navigate to <code>http://localhost:3000/</code>.</p>
 <p>(See also: <a href="http://developer.tidepool.io/docs/recipes/index.html#a-running-the-platform-locally-with-runservers-but-blip-with-hot-module-replacement-hmr-via-webpack" title="Tidepool developer portal: front end recipes" target="_blank">recipe for running blip locally with hot module replacement</a>.)</p>
 <h3 id="getting-past-email-verification-for-a-user-created-locally">Getting past e-mail verification for a user created locally</h3>
-<p>When running locally with runservers, no e-mail will be sent to a sign-up e-mail address, and so a workaround is needed to get past the e-mail verification step for a newly created local account being used for development. What you need to do is construct the login URL that is provided in a link in the verification e-mail <em>manually</em> by finding the correct ID for the e-mail confirmation. There are two ways to do this: by looking in the local <code>server.log</code> (located at the root level of where you&apos;ve cloned all the Tidepool repositories) or by finding it in your local Mongo database. The steps for the latter are:</p>
+<p>When running locally with <code>runservers</code>, no e-mail will be sent to a sign-up e-mail address, and so a workaround is needed to get past the e-mail verification step for a newly created local account being used for development. What you need to do is construct the login URL that is provided in a link in the verification e-mail <em>manually</em> by finding the correct ID for the e-mail confirmation. There are two ways to do this: by looking in the local <code>server.log</code> (located at the root level of where you&apos;ve cloned all the Tidepool repositories) or by finding it in your local Mongo database. The steps for the latter are:</p>
 <ul>
 <li>start a Mongo shell in a fresh Terminal window with <code>mongo</code></li>
 <li>switch to the <code>confirm</code> database with <code>use confirm</code></li>
 <li>find the pending account with <code>db.confirmations.find({status: &apos;pending&apos;});</code></li>
-<li>copy the <code>_id</code> from the pending confirmation record with an <code>email</code> matching the account you&apos;ve just created and provide it as a <code>signupKey</code> parameter in the login URL: <code>http://localhost:3000/login?signUpKey=&lt;_id&gt;</code></li>
+<li>copy the <code>_id</code> from the pending confirmation record with an <code>email</code> matching the account you&apos;ve just created and provide it as a <code>signupKey</code> parameter in the login URL: <code>http://localhost:3000/login?signupKey=&lt;_id&gt;</code></li>
 </ul>
 <h3 id="creating-a-user-without-email-verification">Creating a user without e-mail verification</h3>
 <p>When running locally, there is also workaround so you don&apos;t have to verify the e-mail address of a new user: if you create a new user and add the localhost secret +skip to the e-mail address - e.g. <code>me+skip@something.org</code> - this will then allow you to login straightaway, skipping the e-mail verification step.</p>
