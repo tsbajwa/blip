@@ -71,6 +71,7 @@ api.user.login = function(user, options, cb) {
   }
 
   tidepool.login(user, options, function(err, data) {
+    console.log('login api result', err, data)
     if (err) {
       return cb(err);
     }
@@ -436,6 +437,7 @@ api.patient.get = function(patientId, cb) {
 
     // Fetch the patient's team
     tidepool.getTeamMembers(userId, function(err, permissions) {
+      console.log('api tidepool.getTeamMembers', err, permissions);
       if (err) {
         return cb(err);
       }
@@ -450,8 +452,9 @@ api.patient.get = function(patientId, cb) {
       var memberIds = Object.keys(permissions);
 
       async.map(memberIds, getPerson, function(err, members) {
+        console.log('api.map memberIds, getPerson', err, members)
         if (err) {
-          return cb(err);
+          // return cb(err);
         }
         // Filter any member ids that returned nothing
         members = _.filter(members);
@@ -463,6 +466,7 @@ api.patient.get = function(patientId, cb) {
         patient.team = members;
 
         api.metadata.settings.get(userId, function(err, settings) {
+          console.log('api.metadata.settings.get for each member', err, settings)
           if (err) {
             return cb(err);
           }

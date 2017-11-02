@@ -194,9 +194,10 @@ export function login(api, credentials, options, postLoginAction) {
     dispatch(sync.loginRequest());
 
     api.user.login(credentials, options, (err) => {
+      console.log('user.login err', err);
       if (err) {
         var error = (err.status === 401) ? createActionError(ErrorMessages.ERR_LOGIN_CREDS, err) :
-          createActionError(ErrorMessages.ERR_LOGIN, err);
+        createActionError(ErrorMessages.ERR_LOGIN, err);
 
         if (err.status === 403) {
           dispatch(sync.loginFailure(null, err, { isLoggedIn: false, emailVerificationSent: false }));
@@ -206,6 +207,7 @@ export function login(api, credentials, options, postLoginAction) {
         }
       } else {
         api.user.get((err, user) => {
+          console.log('user.get err', err);
           const isClinic = personUtils.isClinic(user);
 
           let redirectRoute = '/patients?justLoggedIn=true';
@@ -220,6 +222,7 @@ export function login(api, credentials, options, postLoginAction) {
           } else {
             if (_.get(user, ['profile', 'patient'])) {
               api.patient.get(user.userid, (err, patient) => {
+                console.log('patient.get err', err);
                 if (err) {
                   dispatch(sync.loginFailure(
                     createActionError(ErrorMessages.ERR_FETCHING_PATIENT, err), err
