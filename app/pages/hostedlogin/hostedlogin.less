@@ -1,0 +1,64 @@
+/**
+ * Copyright (c) 2014, Tidepool Project
+ *
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the associated License, which is identical to the BSD 2-Clause
+ * License as published by the Open Source Initiative at opensource.org.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the License for more details.
+ *
+ * You should have received a copy of the License along with this program; if
+ * not, you can obtain one from Tidepool Project at tidepool.org.
+ */
+
+.HostedLogin {
+  .flex-layout-for-logged-out-routes(575px, 550px);
+}
+
+a.HostedLogin-link {
+  align-self: center;
+  text-align: center;
+  background-color: @purple-medium;
+  color: #fff;
+  font-size: 22px;
+  font-weight: normal;
+  padding: @spacing-base 50px;
+  border-radius: 15px;
+  border: 0;
+  margin-bottom: @spacing-tiny;
+  &:hover, &:focus {
+    background-color: @purple-uploader;
+    text-decoration: none;
+  }
+}
+
+.HostedLogin-form {
+  margin-bottom: @spacing-large;
+  @media(max-width: @screen-md-max) {
+    // a ✨magic✨ number matching the signup-form's size to get the logo to stay in the same place
+    // when clicking from root and/or /login to /signup
+    min-height: 358px;
+  }
+}
+
+.HostedLogin-box {
+  padding-top: @spacing-base;
+  padding-bottom: @spacing-base;
+
+  @media(min-width: @screen-md-min) {
+    padding-top: @spacing-large;
+    padding-bottom: @spacing-large;
+  }
+}
+
+.HostedLogin-inviteIntro {
+  width: 450px;
+  margin: 0 auto;
+  text-align: center;
+
+  > p {
+    margin: 5px 0;
+  }
+}

@@ -15,24 +15,25 @@
 
 // Wrapper around the Tidepool client library
 
-var _ = require('lodash');
-var async = require('async');
-var bows = require('bows');
+import _ from 'lodash';
+import async from 'async';
+import bows from 'bows';
 
-var createTidepoolClient = require('tidepool-platform-client');
-var tidepool;
+import createTidepoolClient from 'tidepool-platform-client';
+let tidepool;
+let auth;
 
-var config = require('../config');
+import config from '../config';
 
-var personUtils = require('./personutils');
-var migrations = require('./lib/apimigrations');
+import personUtils from './personutils';
+import migrations from './lib/apimigrations';
 
-var api = {
+let api = {
   log: bows('Api')
 };
 
 api.init = function(cb) {
-  var tidepoolLog = bows('Tidepool');
+  const tidepoolLog = bows('Tidepool');
   tidepool = createTidepoolClient({
     host: config.API_HOST,
     uploadApi: config.UPLOAD_API,
@@ -57,6 +58,10 @@ api.init = function(cb) {
 // ----- User -----
 api.user = {};
 
+api.user.saveAccessTokenSession = function(userID, accessToken){
+  return tidepool.saveAccessTokenSession(userID, accessToken, {remember: true});
+}
+
 api.user.isAuthenticated = function() {
   return tidepool.isLoggedIn();
 };
@@ -74,27 +79,15 @@ api.user.login = function(user, options, cb) {
     if (err) {
       return cb(err);
     }
-
     cb();
-  });
-};
-
-api.user.oauthLogin = function(accessToken, cb) {
-  api.log('GET /user/oauthLogin');
-
-  tidepool.oauthLogin(accessToken, function(err, data) {
-    if (err) {
-      return cb(err);
-    }
-    cb(null, data);
   });
 };
 
 api.user.signup = function(user, cb) {
   api.log('POST /user');
 
-  var newAccount = accountFromUser(user);
-  var newProfile = profileFromUser(user);
+  const newAccount = accountFromUser(user);
+  const newProfile = profileFromUser(user);
 
   // First, create user account
   tidepool.signup(newAccount, function(err, account) {
@@ -117,7 +110,7 @@ api.user.signup = function(user, cb) {
       });
     }
 
-    var userId = account.userid;
+    const userId = account.userid;
 
     tidepool.signupStart(userId, function(err, results){
       if (err){
@@ -148,26 +141,9 @@ api.user.signup = function(user, cb) {
 };
 
 api.user.logout = function(cb) {
-  api.log('POST /user/logout');
-
-  if (!api.user.isAuthenticated()) {
-    api.log('not authenticated but still destroySession');
-    tidepool.destroySession();
-    if (cb) {
-      cb();
-    }
-    return;
-  }
-
-  tidepool.logout(function(err) {
-    if (err) {
-      api.log('error logging out but still destroySession');
-      tidepool.destroySession();
-    }
-    if (cb) {
-      cb();
-    }
-    return;
+  api.log('/user/logout');
+  tidepool.logout(function(err, data) {
+    return cb();
   });
 };
 
@@ -184,13 +160,13 @@ api.user.destroySession = function() {
 api.user.get = function(cb) {
   api.log('GET /user');
 
-  var userId = tidepool.getUserId();
+  const userId = tidepool.getUserId();
 
   // Fetch user account data (username, etc.)...
-  var getAccount = tidepool.getCurrentUser.bind(tidepool);
+  const getAccount = tidepool.getCurrentUser.bind(tidepool);
 
   // ...and user profile information (full name, etc.)
-  var getProfile = function(cb) {
+  const getProfile = function(cb) {
     tidepool.findProfile(userId, function(err, profile) {
       // We don't want to fire an error if the patient has no profile saved yet,
       // so we check if the error status is not 404 first.
@@ -198,8 +174,8 @@ api.user.get = function(cb) {
         return cb(err);
       }
 
-      var updateProfileAfterMigration = false;
-      var migration;
+      let updateProfileAfterMigration = false;
+      let migration;
 
       migration = migrations.profileFullName;
       if (migration.isRequired(profile)) {
@@ -216,7 +192,7 @@ api.user.get = function(cb) {
     });
   };
 
-  var getPreferences = function(cb) {
+  const getPreferences = function(cb) {
     api.metadata.preferences.get(userId, cb);
   };
 
@@ -237,8 +213,8 @@ api.user.get = function(cb) {
 api.user.put = function(user, cb) {
   api.log('PUT /user');
 
-  var account = accountFromUser(user);
-  var profile = profileFromUser(user);
+  const account = accountFromUser(user);
+  const profile = profileFromUser(user);
 
   async.parallel({
     account: tidepool.updateCurrentUser.bind(tidepool, account),
@@ -254,7 +230,7 @@ api.user.put = function(user, cb) {
 };
 
 function accountFromUser(user) {
-  var account = _.pick(user, 'username', 'password', 'emails', 'roles');
+  const account = _.pick(user, 'username', 'password', 'emails', 'roles');
   return account;
 }
 
@@ -265,11 +241,10 @@ function profileFromUser(user) {
 function userFromAccountAndProfile(results) {
   // sometimes `account` isn't in the results after e.g., password update
   var account = results.account || {};
-
   // sometimes `profile` isn't in the results after e.g., after account signup
   var profile = results.profile || {};
 
-  var user = account;
+  const user = account;
   user.profile = profile;
   user.preferences = results.preferences;
 
@@ -359,14 +334,14 @@ api.patient = {};
 
 // Get a user's public info
 function getPerson(userId, cb) {
-  var person = {userid: userId};
+  let person = {userid: userId};
 
   tidepool.findProfile(userId, function(err, profile) {
     if (err) {
       return cb(err);
     }
 
-    var migration;
+    let migration;
 
     migration = migrations.profileFullName;
     if (migration.isRequired(profile)) {
@@ -393,7 +368,7 @@ function getPatient(patientId, cb) {
       return cb();
     }
     // Attach the logged-in user's permissions for that patient
-    var userId = tidepool.getUserId();
+    const userId = tidepool.getUserId();
     tidepool.getAccessPermissionsForGroup(patientId, userId, function(err, permissions) {
       if (err) {
         return cb(err);
@@ -416,11 +391,11 @@ function getPatient(patientId, cb) {
 }
 
 function updatePatient(patient, cb) {
-  var patientId = patient.userid;
+  const patientId = patient.userid;
   // Hang on to team, we'll add back later
-  var team = patient.team || [];
+  const team = patient.team || [];
 
-  var profile = patient.profile;
+  const profile = patient.profile;
   tidepool.addOrUpdateProfile(patientId, profile, function(err, profile) {
     if (err) {
       return cb(err);
@@ -437,7 +412,7 @@ function updatePatient(patient, cb) {
 api.patient.get = function(patientId, cb) {
   api.log('GET /patients/' + patientId);
 
-  var userId = tidepool.getUserId();
+  const userId = tidepool.getUserId();
 
   getPatient(patientId, function(err, patient) {
     if (err) {
@@ -467,7 +442,7 @@ api.patient.get = function(patientId, cb) {
       // filter her id from set of permissions
       permissions = _.omit(permissions, userId);
       // Convert to array of user ids
-      var memberIds = Object.keys(permissions);
+      const memberIds = Object.keys(permissions);
 
       async.map(memberIds, getPerson, function(err, members) {
         if (err) {
@@ -498,7 +473,7 @@ api.patient.get = function(patientId, cb) {
 
 api.patient.post = function(patient, cb) {
   api.log('POST /patients');
-  var userId = tidepool.getUserId();
+  const userId = tidepool.getUserId();
   patient = _.assign({}, patient, {userid: userId});
 
   return updatePatient(patient, cb);
@@ -521,7 +496,7 @@ api.patient.getAll = function(cb) {
 
     //these are the accounts that have shared their data
     //with a given set of permissions.
-    var viewableUsers = _.filter(users, function(user) {
+    let viewableUsers = _.filter(users, function(user) {
       return !_.isEmpty(user.trustorPermissions);
     });
 
@@ -553,7 +528,7 @@ api.metadata.preferences.get = function(patientId, cb) {
       return cb(err);
     }
 
-    var preferences = payload || {};
+    const preferences = payload || {};
 
     return cb(null, preferences);
   });
@@ -579,7 +554,7 @@ api.metadata.settings.get = function(patientId, cb) {
       return cb(err);
     }
 
-    var settings = payload || {};
+    const settings = payload || {};
 
     return cb(null, settings);
   });
@@ -621,7 +596,7 @@ api.team.getNotes = function(userId,cb){
   api.log('GET /message/notes/' + userId);
 
   //at present we are not using the date range
-  var dateRange = null;
+  const dateRange = null;
 
   tidepool.getNotesForUser(userId, dateRange, function(error,messages){
     if (error){
@@ -680,7 +655,7 @@ api.patientData = {};
 api.patientData.get = function(patientId, options, cb) {
   api.log('GET /data/' + patientId);
 
-  var now = Date.now();
+  const now = Date.now();
   tidepool.getDeviceDataForUser(patientId, options, function (err, data) {
     if (err) {
       return cb(err);
@@ -698,7 +673,7 @@ api.patientData.get = function(patientId, options, cb) {
 api.invitation = {};
 
 api.invitation.send = function(emailAddress, permissions, callback) {
-  var loggedInUser = tidepool.getUserId();
+  const loggedInUser = tidepool.getUserId();
   api.log('POST /confirm/send/invite/' + loggedInUser);
   return tidepool.inviteUser(emailAddress, permissions, loggedInUser, callback);
 };
@@ -709,25 +684,25 @@ api.invitation.getReceived = function(callback) {
 };
 
 api.invitation.accept = function(key, fromUserId, callback) {
-  var loggedInUser = tidepool.getUserId();
+  const loggedInUser = tidepool.getUserId();
   api.log('POST /confirm/accept/invite/' + loggedInUser +'/'+fromUserId );
   return tidepool.acceptInvite(key, loggedInUser, fromUserId, callback);
 };
 
 api.invitation.dismiss = function(key, fromUserId, callback) {
-  var loggedInUser = tidepool.getUserId();
+  const loggedInUser = tidepool.getUserId();
   api.log('POST /confirm/dismiss/invite/'+ loggedInUser+ '/'+fromUserId );
   return tidepool.dismissInvite(key, loggedInUser, fromUserId, callback);
 };
 
 api.invitation.getSent = function(callback) {
-  var loggedInUser = tidepool.getUserId();
+  const loggedInUser = tidepool.getUserId();
   api.log('GET /confirm/invite/'+loggedInUser);
   return  tidepool.invitesSent(loggedInUser, callback);
 };
 
 api.invitation.cancel = function(emailAddress, callback) {
-   var loggedInUser = tidepool.getUserId();
+   const loggedInUser = tidepool.getUserId();
   api.log('DELETE /confirm/' + loggedInUser+ '/invited/'+ emailAddress);
   return tidepool.removeInvite(emailAddress, loggedInUser, callback);
 };
@@ -737,19 +712,19 @@ api.invitation.cancel = function(emailAddress, callback) {
 api.access = {};
 
 api.access.setMemberPermissions = function(memberId, permissions, callback) {
-  var groupId = tidepool.getUserId();
+  const groupId = tidepool.getUserId();
   api.log('PUT /access/' + groupId + '/' + memberId);
   return tidepool.setAccessPermissions(memberId, permissions, callback);
 };
 
 api.access.removeMember = function(memberId, callback) {
-  var groupId = tidepool.getUserId();
+  const groupId = tidepool.getUserId();
   api.log('POST /access/' + groupId + '/' + memberId);
   return tidepool.setAccessPermissions(memberId, null, callback);
 };
 
 api.access.leaveGroup = function(groupId, callback) {
-  var memberId = tidepool.getUserId();
+  const memberId = tidepool.getUserId();
   api.log('POST /access/' + groupId + '/' + memberId);
   return tidepool.setAccessPermissionsOnGroup(groupId, memberId, null, callback);
 };

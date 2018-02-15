@@ -1,0 +1,103 @@
+/**
+ * Copyright (c) 2014, Tidepool Project
+ *
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the associated License, which is identical to the BSD 2-Clause
+ * License as published by the Open Source Initiative at opensource.org.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the License for more details.
+ *
+ * You should have received a copy of the License along with this program; if
+ * not, you can obtain one from Tidepool Project at tidepool.org.
+ */
+
+.signup {
+  .flex-layout-for-logged-out-routes(575px, 650px);
+}
+
+.signup-container {
+  align-self: center;
+  padding-top: @spacing-base;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form-box {
+  padding-top: @spacing-base;
+  padding-bottom: @spacing-base;
+
+  @media(min-width: @screen-md-min) {
+    padding-top: @spacing-large;
+    padding-bottom: @spacing-large;
+  }
+}
+
+.signup-inviteIntro {
+  width: 450px;
+  margin: 0 auto;
+  text-align: center;
+
+  > p {
+    margin: 5px 0;
+  }
+}
+
+.signup-selection {
+  padding: 15px;
+  border-radius: 4px;
+  border: solid 1px #979797;
+  margin-bottom: 20px;
+
+  @media(max-width: @screen-lg-min) {
+    margin-left: @spacing-base;
+    margin-right: @spacing-base;
+  }
+
+}
+
+.signup-selection:hover {
+  background-color: white;
+  border-color: #6078ff;
+  cursor: pointer;
+}
+
+.signup-selection.selected {
+  background-color: white;
+  border-color: #6078ff;
+  .signup-selectionCheck {
+    display: block;
+  }
+}
+
+.signup-selectionHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.signup-selectionCheck {
+  width: 30px;
+  height: 20px;
+  display: none;
+  margin-top: -5px;
+}
+
+.signup-selectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #6078ff;
+}
+
+.signup-selectionDescription {
+  font-size: 18px;
+  color: #8c8c8c;
+  margin-bottom: 10px;
+}
+
+.signup-continue {
+  display: flex;
+  flex-direction: row-reverse;
+}

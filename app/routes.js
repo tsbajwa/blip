@@ -7,14 +7,15 @@ import BrowserWarning from './pages/browserwarning';
 import ClinicianDetails from './pages/cliniciandetails';
 import ConfirmPasswordReset from './pages/passwordreset/confirm';
 import EmailVerification from './pages/emailverification';
-import Login from './pages/login';
+import Auth from './components/auth';
+import HostedLogin from './pages/hostedlogin';
+import HostedSignup from './pages/hostedsignup';
 import PatientData from './pages/patientdata';
 import PatientNew from './pages/patientnew';
 import PatientProfile from './pages/patientprofile/patientprofile';
 import Patients from './pages/patients';
 import RequestPasswordReset from './pages/passwordreset/request';
 import Share from './pages/share/share';
-import Signup from './pages/signup';
 import Terms from './pages/terms';
 import UserProfile from './pages/userprofile';
 import VerificationWithPassword from './pages/verificationwithpassword';
@@ -273,15 +274,15 @@ export const onOtherRouteEnter = (api) => (nextState, replace) => {
 export const getRoutes = (appContext, store) => {
   let props = appContext.props;
   let api = props.api;
-
-  return (
+ return (
     <Route path='/' component={AppComponent} {...props}>
-      <IndexRoute component={Login} onEnter={onIndexRouteEnter(api, store)} />
-      <Route path='login' component={Login} onEnter={requireNoAuth(api)} />
+      <IndexRoute component={HostedLogin} />
+      <Route path='login' component={HostedLogin} onEnter={requireNoAuth(api)} />
+      <Route path='logged-in' component={Auth} {...props}/>
       <Route path='terms' components={Terms} />
-      <Route path='signup' component={Signup} onEnter={requireNoAuth(api)} />
-      <Route path='signup/personal' component={Signup} onEnter={requireNoAuth(api)} />
-      <Route path='signup/clinician' component={Signup} onEnter={requireNoAuth(api)} />
+      <Route path='signup' component={HostedSignup} onEnter={requireNoAuth(api)} />
+      <Route path='signup/personal' component={HostedSignup} onEnter={requireNoAuth(api)} />
+      <Route path='signup/clinician' component={HostedSignup} onEnter={requireNoAuth(api)} />
       <Route path='clinician-details' component={ClinicianDetails} onEnter={requireAuth(api, store)} />
       <Route path='email-verification' component={EmailVerification} onEnter={requireNotVerified(api, store)} />
       <Route path='profile' component={UserProfile} onEnter={requireAuth(api, store)} />
